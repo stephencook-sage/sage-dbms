@@ -1,0 +1,44 @@
+#root {
+    font-size:12px;
+    font-family:'Courier New';
+    display:inline-table;
+}
+
+input{
+    border:1px solid black;
+    display:inline-table;
+    font-size:20px;
+    font-family:'Courier New';
+    width:100px;
+    padding-right:0px;
+    padding-left:0px;
+}
+
+th {
+    font-size:16px;
+    font-family:'Courier New';
+
+}
+
+
+#table {
+     border:1px solid black;
+}
+
+
+#submit-button {
+
+    background-color:black;
+    width:150px;
+    height:25px;
+    color:White;
+    font-size-adjust:0.50;
+
+}
+
+#submit-button.onactive {
+        background-color:white;
+        color:black;
+
+
+}

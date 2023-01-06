@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add new Discount</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script type="text/javascript">
+
+        function getGuid() {
+
+            xhttp = new XMLHttpRequest();
+            var url = new URL ("http://localhost:8081/genGuid");
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                const guid = this.responseText;
+                document.getElementById("table").innerHTML = guid;
+
+                }
+            };
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+
+        function createInputs() {
+
+            var input = document.createElement('input');
+            var table = document.getElementById('table');
+            var titles = document.getElementsByTagName("th");
+
+
+
+            for (i = 0; i < 2; i ++){
+                var tableRow = document.createElement('tr');
+
+                tableRow.id = 'addDiscTable';
+                for (j = 0; j < 19; j++) {
+                    console.log(titles[j].innerHTML.concat(i));
+                    var input = document.createElement('input');
+                    input.type = 'text';
+                    input.id = titles[j].innerHTML.concat(i);
+                    var tableData = document.createElement('td');
+                    if(j == 4) {
+                        input.type = 'number';
+                        } else if (j == 6) {
+                            input.type = 'number';
+                        } else if (j == 13) {
+                            var button = document.createElement('button');
+                            button.type = "button";
+                            button.value ="Generate GUID";
+                            button.onclick = "getGuid();";
+                            tableData.appendChild(button);
+                        } else if (j == 14) {
+                            input.type = 'date';
+                        } else if (j == 15) {
+                            input.type = 'date';
+                        }
+                    tableData.appendChild(input);
+                    tableRow.appendChild(tableData);
+
+
+                }
+                document.getElementById('table').append(tableRow);
+
+
+            }
+             var submit = document.createElement('input');
+             submit.type = 'submit';
+             submit.value = "Submit";
+             submit.id = "submit-button";
+             document.getElementById('table').append(submit);
+             getGuid();
+        }
+    </script>
+
+</head>
+<body onload="createInputs()">
+    <h1>add new discounts</h1>
+    <div id ="root">
+        <form id = "discount-tables" action="">
+            <table id="table">
+                <tr id="tableTitles">
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Invoice<br>Description</th>
+                    <th>Period Name</th>
+                    <th>Duration</th>
+                    <th>TypeCode</th>
+                    <th>Value</th>
+                    <th>Charge Type</th>
+                    <th>Status Code</th>
+                    <th>Discount Code</th>
+                    <th>Short Description</th>
+                    <th>EnumerationCode</th>
+                    <th>EnumerationType</th>
+                    <th>GUID</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>period Name</th>
+                    <th>period Description</th>
+                    <th>Status Code</th>
+                    <th>GUID</th>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+
+</body>
+</html>
